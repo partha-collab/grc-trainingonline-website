@@ -68,18 +68,26 @@
       </div>
 
       <div class="contact-form">
-        <form onsubmit="alert('Connect this form to an email service (e.g. Formspree, or your CRM) to go live.'); return false;">
+        <div id="form-success" style="display:none; text-align:center; padding:40px 20px;">
+          <div style="font-size:40px; margin-bottom:12px;">✓</div>
+          <h3 style="color:var(--navy-950); margin-bottom:8px;">Message sent</h3>
+          <p style="color:var(--slate); font-size:14.5px;">Thanks for reaching out — we'll get back to you within one business day.</p>
+        </div>
+        <div id="form-error" style="display:none; background:#FEECEC; border:1px solid #F5B5B5; border-radius:8px; padding:14px 16px; margin-bottom:16px; color:#9B1C1C; font-size:13.5px;">
+          Something went wrong sending your message. Please try again, or email us directly at marketing@grctrainingonline.com.
+        </div>
+        <form id="contact-form" action="https://formspree.io/f/xeeynzzz" method="POST">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" required></div>
+            <div class="form-group"><label>First Name</label><input type="text" name="first_name" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="last_name" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>Work Email</label><input type="email" required></div>
-            <div class="form-group"><label>Company</label><input type="text"></div>
+            <div class="form-group"><label>Work Email</label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Company</label><input type="text" name="company"></div>
           </div>
           <div class="form-group" style="margin-bottom:16px;">
             <label>What are you reaching out about?</label>
-            <select>
+            <select name="inquiry_type">
               <option>General Question</option>
               <option>Corporate / Onsite Training Proposal</option>
               <option>Panelist / Speaking Inquiry</option>
@@ -89,12 +97,41 @@
           </div>
           <div class="form-group" style="margin-bottom:20px;">
             <label>Message</label>
-            <textarea rows="5" required></textarea>
+            <textarea name="message" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Send Message</button>
-          <p class="form-note">Placeholder form — connect to Formspree, a CRM, or your email service before launch.</p>
         </form>
       </div>
+
+      <script>
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = contactForm.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.textContent = 'Sending...';
+          document.getElementById('form-error').style.display = 'none';
+
+          fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          }).then(function(response) {
+            if (response.ok) {
+              contactForm.style.display = 'none';
+              document.getElementById('form-success').style.display = 'block';
+            } else {
+              document.getElementById('form-error').style.display = 'block';
+              btn.disabled = false;
+              btn.textContent = 'Send Message';
+            }
+          }).catch(function() {
+            document.getElementById('form-error').style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+          });
+        });
+      </script>
     </div>
   </div>
 </section>
