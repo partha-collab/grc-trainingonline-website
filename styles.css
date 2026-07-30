@@ -192,6 +192,7 @@
   @media (max-width:900px){
     .lib-featured{grid-template-columns:1fr;}
     .lib-featured-icon{margin:0;}
+    .lib-featured-media{min-height:280px;}
   }
 
   /* PANELISTS */
