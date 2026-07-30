@@ -366,3 +366,13 @@
 .soon-wrap p{color:var(--slate); font-size:16px; line-height:1.7; margin-bottom:14px;}
 .soon-wrap .soon-email{color:var(--navy-800); font-weight:600;}
 .soon-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icons{display:flex; gap:10px; margin-top:18px;}
+.social-icons a{
+  width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.08);
+  display:flex; align-items:center; justify-content:center; transition:background .15s ease;
+}
+.social-icons a:hover{background:var(--gold-500);}
+.social-icons a:hover svg{stroke:var(--navy-950); fill:var(--navy-950);}
+.social-icons a svg{transition:all .15s ease;}
