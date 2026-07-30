@@ -118,7 +118,10 @@
     transition:all .2s ease; position:relative; overflow:hidden;
   }
   .offer-card:hover{box-shadow:var(--shadow-md); transform:translateY(-3px); border-color:var(--navy-800);}
-  .offer-num{font-family:'Fraunces',serif; font-size:13px; color:var(--gold-500); font-weight:600; letter-spacing:0.05em; margin-bottom:18px; display:block;}
+  .offer-num{
+    width:44px; height:44px; border-radius:10px; background:var(--navy-950);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
   .offer-card h3{font-size:19px; color:var(--navy-950); margin-bottom:10px;}
   .offer-card p{font-size:14px; color:var(--slate); margin-bottom:18px;}
   .offer-card a.link{font-size:13.5px; font-weight:600; color:var(--navy-800); display:inline-flex; align-items:center; gap:6px;}
@@ -166,6 +169,30 @@
   .lib-body .price-row{display:flex; justify-content:space-between; align-items:center;}
   .lib-body .price{font-family:'Fraunces',serif; font-weight:600; color:var(--navy-950);}
   .lib-body .buy{font-size:12.5px; font-weight:700; color:var(--navy-800);}
+
+  .lib-featured{
+    display:grid; grid-template-columns:0.85fr 1.15fr; border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; box-shadow:var(--shadow-sm);
+  }
+  .lib-featured-media{
+    background:linear-gradient(150deg,var(--navy-950),var(--navy-700)); padding:40px;
+    display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; gap:24px;
+  }
+  .lib-featured-tag{background:var(--gold-500); color:var(--navy-950); font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:20px;}
+  .lib-featured-icon{background:rgba(255,255,255,0.08); border-radius:16px; padding:24px; align-self:center; margin:auto;}
+  .lib-featured-body{padding:40px; display:flex; flex-direction:column; justify-content:center; gap:14px;}
+  .lib-featured-body h3{font-size:22px; color:var(--navy-950);}
+  .lib-featured-body p{color:var(--slate); font-size:14.5px;}
+
+  .lib-card-soon{display:flex; align-items:center; gap:14px; padding:20px;}
+  .lib-thumb-soon{background:var(--mist-deep); border-radius:10px; width:52px; height:52px; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .lib-card-soon .lib-body{padding:0;}
+  .lib-card-soon h4{margin-bottom:0;}
+
+  @media (max-width:900px){
+    .lib-featured{grid-template-columns:1fr;}
+    .lib-featured-icon{margin:0;}
+  }
 
   /* PANELISTS */
   .panel-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:18px;}
@@ -326,3 +353,15 @@
   .webinar-row{grid-template-columns:1fr; text-align:left;}
   .webinar-row .date-block{width:70px;}
 }
+
+/* ===== COMING SOON PAGE ===== */
+.soon-wrap{max-width:640px; margin:0 auto; text-align:center; padding:100px 32px 120px;}
+.soon-icon{
+  width:96px; height:96px; border-radius:24px; background:linear-gradient(150deg,var(--navy-950),var(--navy-700));
+  display:flex; align-items:center; justify-content:center; margin:0 auto 32px;
+}
+.soon-tag{display:inline-block; background:var(--gold-100); color:#7A5511; font-size:12.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:20px;}
+.soon-wrap h1{font-size:clamp(28px,3.6vw,38px); color:var(--navy-950); margin-bottom:18px;}
+.soon-wrap p{color:var(--slate); font-size:16px; line-height:1.7; margin-bottom:14px;}
+.soon-wrap .soon-email{color:var(--navy-800); font-weight:600;}
+.soon-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;}
