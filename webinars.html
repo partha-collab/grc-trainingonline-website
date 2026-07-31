@@ -71,15 +71,31 @@
       <p>Instant access after purchase.</p>
     </div>
 
-    <div class="rec-grid">
-      <div class="rec-card"><span class="cat">Professional Development</span><h4>6 Hour Virtual Seminar: Project Management for HR Professionals (Recorded)</h4><a href="webinar-project-management-for-hr-professionals.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">HR Policy</span><h4>How to Document Employee Behavior: Protect Yourself &amp; Lead with Confidence</h4><a href="webinar-how-to-document-employee-behavior.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">HR &amp; Employment Law</span><h4>Leave Abuse under FMLA, ADA and Workers' Compensation (Recorded)</h4><a href="webinar-leave-abuse-fmla-ada-workers-comp.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">Technical (Excel/Power BI)</span><h4>3-Hour Virtual Seminar on Mastering Excel Formulas &amp; Functions (Recorded)</h4><a href="webinar-excel-formulas-functions.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">HR &amp; Employment Law</span><h4>How HR Gets FMLA Wrong &amp; How to Fix It for 2026: Avoid Costly Errors (Rec)</h4><a href="webinar-how-hr-gets-fmla-wrong.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">HR &amp; Employment Law</span><h4>Investigating ADA, FMLA, and Worker's Comp Abuse</h4><a href="webinar-investigating-ada-fmla-workers-comp-abuse.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">HR &amp; Employment Law</span><h4>2-Hour Virtual Seminar on How to Conduct an Internal Investigation (Rec)</h4><a href="webinar-internal-investigation-2hr.html">Watch now →</a></div>
-      <div class="rec-card"><span class="cat">Technology &amp; HR Innovation</span><h4>ChatGPT: A Primer for HR Professionals (Recorded)</h4><a href="webinar-chatgpt-primer-hr.html">Watch now →</a></div>
+    <div class="rec-search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--slate-light)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="rec-search" placeholder="Search webinars by title, topic, or speaker...">
+    </div>
+
+    <div class="tabs" id="rec-tabs">
+      <div class="tab active" data-cat="all">All</div>
+      <div class="tab" data-cat="Professional Development">Professional Development</div>
+      <div class="tab" data-cat="HR Policy">HR Policy</div>
+      <div class="tab" data-cat="HR & Employment Law">HR & Employment Law</div>
+      <div class="tab" data-cat="Technical (Excel/Power BI)">Technical (Excel/Power BI)</div>
+      <div class="tab" data-cat="Technology & HR Innovation">Technology & HR Innovation</div>
+    </div>
+
+    <p id="rec-empty" style="display:none; color:var(--slate-light); font-size:14px; padding:20px 0;">No webinars match your search. Try a different keyword or category.</p>
+
+    <div class="rec-grid" id="rec-grid">
+      <div class="rec-card" data-cat="Professional Development" data-search="6 hour virtual seminar project management for hr professionals recorded rebecca staton-reinstein"><span class="cat">Professional Development</span><h4>6 Hour Virtual Seminar: Project Management for HR Professionals (Recorded)</h4><a href="webinar-project-management-for-hr-professionals.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="HR Policy" data-search="how to document employee behavior protect yourself lead with confidence suzanne lucas"><span class="cat">HR Policy</span><h4>How to Document Employee Behavior: Protect Yourself &amp; Lead with Confidence</h4><a href="webinar-how-to-document-employee-behavior.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="HR & Employment Law" data-search="leave abuse under fmla ada workers compensation recorded janette levey"><span class="cat">HR &amp; Employment Law</span><h4>Leave Abuse under FMLA, ADA and Workers' Compensation (Recorded)</h4><a href="webinar-leave-abuse-fmla-ada-workers-comp.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="Technical (Excel/Power BI)" data-search="3-hour virtual seminar mastering excel formulas functions recorded mike thomas"><span class="cat">Technical (Excel/Power BI)</span><h4>3-Hour Virtual Seminar on Mastering Excel Formulas &amp; Functions (Recorded)</h4><a href="webinar-excel-formulas-functions.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="HR & Employment Law" data-search="how hr gets fmla wrong how to fix it 2026 avoid costly errors suzanne lucas"><span class="cat">HR &amp; Employment Law</span><h4>How HR Gets FMLA Wrong &amp; How to Fix It for 2026: Avoid Costly Errors (Rec)</h4><a href="webinar-how-hr-gets-fmla-wrong.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="HR & Employment Law" data-search="investigating ada fmla workers comp abuse suzanne lucas"><span class="cat">HR &amp; Employment Law</span><h4>Investigating ADA, FMLA, and Worker's Comp Abuse</h4><a href="webinar-investigating-ada-fmla-workers-comp-abuse.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="HR & Employment Law" data-search="2-hour virtual seminar internal investigation harassment bullying susan strauss"><span class="cat">HR &amp; Employment Law</span><h4>2-Hour Virtual Seminar on How to Conduct an Internal Investigation (Rec)</h4><a href="webinar-internal-investigation-2hr.html">Watch now →</a></div>
+      <div class="rec-card" data-cat="Technology & HR Innovation" data-search="chatgpt primer hr professionals recorded diane dee"><span class="cat">Technology &amp; HR Innovation</span><h4>ChatGPT: A Primer for HR Professionals (Recorded)</h4><a href="webinar-chatgpt-primer-hr.html">Watch now →</a></div>
     </div>
 
     <div class="view-all">
@@ -87,6 +103,41 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var searchInput = document.getElementById('rec-search');
+  var tabs = document.querySelectorAll('#rec-tabs .tab');
+  var cards = document.querySelectorAll('#rec-grid .rec-card');
+  var emptyMsg = document.getElementById('rec-empty');
+  var activeCat = 'all';
+
+  function applyFilters() {
+    var query = searchInput.value.trim().toLowerCase();
+    var visibleCount = 0;
+    cards.forEach(function(card) {
+      var matchesCat = (activeCat === 'all') || (card.getAttribute('data-cat') === activeCat);
+      var matchesSearch = !query || card.getAttribute('data-search').indexOf(query) !== -1;
+      var show = matchesCat && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeCat = tab.getAttribute('data-cat');
+      applyFilters();
+    });
+  });
+})();
+</script>
+
 
 <!-- SUBSCRIBE -->
 <section class="subscribe">
