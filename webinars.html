@@ -7,6 +7,17 @@
 <meta name="description" content="Browse live and recorded compliance webinars for HR, risk, and compliance professionals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://grctrainingonline.com/webinars.html">
+<meta property="og:title" content="Webinars — GRC Training Online">
+<meta property="og:description" content="Browse live and recorded compliance webinars for HR, risk, and compliance professionals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://grctrainingonline.com/webinars.html">
+<meta property="og:image" content="https://grctrainingonline.com/logo.png">
+<meta property="og:site_name" content="GRC Training Online">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Webinars — GRC Training Online">
+<meta name="twitter:description" content="Browse live and recorded compliance webinars for HR, risk, and compliance professionals.">
+<meta name="twitter:image" content="https://grctrainingonline.com/logo.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logo-icon.png">
 </head>
@@ -48,14 +59,33 @@
         <h2>Upcoming Live Webinars</h2>
       </div>
     </div>
-    <div class="webinar-row">
-      <div class="date-block"><span class="mon">Live</span><div class="day">•</div></div>
-      <div>
-        <span class="cat">Technology &amp; HR Innovation</span>
-        <h4>Get Real HR Work Done with Claude: Prompts, Pitfalls, &amp; Practical Use Cases</h4>
-        <div class="meta-line">Live session · Certificate of completion included</div>
+
+    <div class="rec-search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--slate-light)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="live-search" placeholder="Search live webinars by title, topic, or speaker...">
+    </div>
+
+    <div class="tabs" id="live-tabs">
+      <div class="tab active" data-cat="all">All</div>
+      <div class="tab" data-cat="Technology & HR Innovation">Technology & HR Innovation</div>
+      <div class="tab" data-cat="HR Policy">HR Policy</div>
+      <div class="tab" data-cat="HR & Employment Law">HR & Employment Law</div>
+      <div class="tab" data-cat="Technical (Excel/Power BI)">Technical (Excel/Power BI)</div>
+      <div class="tab" data-cat="Professional Development">Professional Development</div>
+    </div>
+
+    <p id="live-empty" style="display:none; color:var(--slate-light); font-size:14px; padding:20px 0;">No live webinars match your search right now.</p>
+
+    <div id="live-grid">
+      <div class="webinar-row" data-cat="Technology & HR Innovation" data-search="get real hr work done with claude prompts pitfalls practical use cases suzanne lucas">
+        <div class="date-block"><span class="mon">Live</span><div class="day">•</div></div>
+        <div>
+          <span class="cat">Technology &amp; HR Innovation</span>
+          <h4>Get Real HR Work Done with Claude: Prompts, Pitfalls, &amp; Practical Use Cases</h4>
+          <div class="meta-line">Live session · Certificate of completion included</div>
+        </div>
+        <a href="webinar-get-real-hr-work-done-with-claude.html" class="btn btn-gold">Register →</a>
       </div>
-      <a href="webinar-get-real-hr-work-done-with-claude.html" class="btn btn-gold">Register →</a>
     </div>
     <p style="color:var(--slate); font-size:14px; margin-top:8px;">More live sessions are added regularly — check back soon or subscribe below to get notified.</p>
   </div>
@@ -103,6 +133,40 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var searchInput = document.getElementById('live-search');
+  var tabs = document.querySelectorAll('#live-tabs .tab');
+  var cards = document.querySelectorAll('#live-grid .webinar-row');
+  var emptyMsg = document.getElementById('live-empty');
+  var activeCat = 'all';
+
+  function applyFilters() {
+    var query = searchInput.value.trim().toLowerCase();
+    var visibleCount = 0;
+    cards.forEach(function(card) {
+      var matchesCat = (activeCat === 'all') || (card.getAttribute('data-cat') === activeCat);
+      var matchesSearch = !query || card.getAttribute('data-search').indexOf(query) !== -1;
+      var show = matchesCat && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeCat = tab.getAttribute('data-cat');
+      applyFilters();
+    });
+  });
+})();
+</script>
 
 <script>
 (function() {
