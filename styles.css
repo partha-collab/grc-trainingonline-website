@@ -377,6 +377,27 @@
 .social-icons a:hover svg{stroke:var(--navy-950); fill:var(--navy-950);}
 .social-icons a svg{transition:all .15s ease;}
 
+/* ===== SITE CHAT ===== */
+.site-chat{position:fixed; right:24px; bottom:24px; z-index:1000; font-family:'Inter',sans-serif;}
+.site-chat__toggle{border:0; border-radius:999px; background:var(--gold-500); color:var(--navy-950); box-shadow:0 10px 30px rgba(7,25,49,.25); padding:14px 18px; display:flex; align-items:center; gap:9px; font:700 14px 'Inter',sans-serif; cursor:pointer; transition:transform .18s ease, background .18s ease;}
+.site-chat__toggle:hover{background:var(--gold-400); transform:translateY(-2px);}
+.site-chat__toggle svg{width:20px; height:20px;}
+.site-chat__panel{position:absolute; right:0; bottom:66px; width:min(360px,calc(100vw - 32px)); background:var(--paper); border:1px solid var(--line); border-radius:16px; box-shadow:0 18px 50px rgba(7,25,49,.22); padding:0 22px 22px; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .18s ease,transform .18s ease,visibility .18s;}
+.site-chat__panel.is-open{opacity:1; visibility:visible; transform:translateY(0);}
+.site-chat__header{background:var(--navy-950); color:#fff; margin:0 -22px 18px; border-radius:15px 15px 0 0; padding:18px 20px; display:flex; align-items:flex-start; justify-content:space-between; gap:16px;}
+.site-chat__eyebrow{font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:var(--gold-400); font-weight:700; margin:0 0 5px;}
+.site-chat__header h2{font-family:'Fraunces',serif; font-size:20px; margin:0; color:#fff;}
+.site-chat__close{border:0; background:transparent; color:#fff; font-size:28px; line-height:1; padding:0; cursor:pointer;}
+.site-chat__intro{font-size:13px; line-height:1.55; color:var(--slate); margin:0 0 15px;}
+.site-chat__form{display:grid; gap:10px;}
+.site-chat__form label{display:grid; gap:5px; font-size:12px; color:var(--ink); font-weight:700;}
+.site-chat__form input,.site-chat__form textarea{width:100%; box-sizing:border-box; padding:10px 11px; border:1px solid var(--line); border-radius:7px; color:var(--ink); font:14px 'Inter',sans-serif; resize:vertical;}
+.site-chat__form input:focus,.site-chat__form textarea:focus{outline:2px solid var(--navy-700); outline-offset:1px;}
+.site-chat__send{border:0; border-radius:7px; background:var(--navy-950); color:#fff; padding:12px 14px; font:700 13px 'Inter',sans-serif; cursor:pointer; margin-top:2px;}
+.site-chat__send:disabled{opacity:.65; cursor:wait;}
+.site-chat__status{font-size:12px; line-height:1.45; color:var(--navy-800); margin:0; min-height:18px;}
+@media (max-width:520px){.site-chat{right:16px; bottom:16px;}.site-chat__toggle span{display:none;}.site-chat__toggle{padding:15px;}.site-chat__panel{bottom:60px;}}
+
 /* ===== WEBINAR DETAIL PAGE ===== */
 .wd-hero{background:var(--mist); padding:44px 0 36px; border-bottom:1px solid var(--line);}
 .wd-badges{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;}
