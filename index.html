@@ -359,5 +359,11 @@
   </div>
 </footer>
 <script src="/chat-widget.js" defer></script>
+<script>
+/* After the Oct 28, 2026 live webinar ends (11:30 AM PDT = 18:30 UTC), hide the live pill and swap the hero card to a general webinars prompt. */
+(function(){if(Date.now()<Date.UTC(2026,9,28,18,30))return;
+var p=document.querySelector('.live-pill');if(p)p.style.display='none';
+var c=document.querySelector('.hero-card');if(c)c.innerHTML='<div class="eyebrow" style="margin-bottom:8px;">On-demand &amp; live training</div><h4>Learn on your schedule</h4><p>Browse our recorded webinar library for instant access, or see what is coming up next.</p><a class="live-link" href="webinars.html">Browse webinars \u2192</a>';})();
+</script>
 </body>
 </html>
