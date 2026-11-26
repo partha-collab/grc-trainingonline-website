@@ -24,7 +24,7 @@
           <p class="site-chat__status" aria-live="polite"></p>
         </form>
       </div>
-      <button class="site-chat__toggle" type="button" aria-expanded="false" aria-controls="site-chat-panel">
+      <button class="site-chat__toggle" type="button" aria-label="Chat with us" aria-expanded="false" aria-controls="site-chat-panel">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.8 9.8 0 0 1-4.3-1L3 20l1.5-4.2A8.3 8.3 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.5 8.5 8.5 0 0 1 9 8.5Z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
         <span>Chat with us</span>
       </button>`;

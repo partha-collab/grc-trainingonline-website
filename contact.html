@@ -58,6 +58,7 @@
     <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<main id="main">
 
 <div class="page-hero">
   <div class="wrap">
@@ -71,26 +72,26 @@
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Get in Touch</h3>
+        <h2>Get in Touch</h2>
         <div class="info-item">
           <div class="ico">@</div>
-          <div><h5>Email</h5><p>marketing@grctrainingonline.com</p></div>
+          <div><h3>Email</h3><p>marketing@grctrainingonline.com</p></div>
         </div>
         <div class="info-item">
           <div class="ico">☎</div>
-          <div><h5>Phone</h5><p>+1 302-433-6276</p></div>
+          <div><h3>Phone</h3><p>+1 302-433-6276</p></div>
         </div>
         <div class="info-item">
           <div class="ico">📍</div>
-          <div><h5>Address</h5><p>1201 North Market Street, Suite 111<br>Wilmington, DE 19801, USA</p></div>
+          <div><h3>Address</h3><p>1201 North Market Street, Suite 111<br>Wilmington, DE 19801, USA</p></div>
         </div>
         <div class="info-item">
           <div class="ico">✦</div>
-          <div><h5>Corporate Training</h5><p>Ask about custom, in-house, or onsite programs for your organization.</p></div>
+          <div><h3>Corporate Training</h3><p>Ask about custom, in-house, or onsite programs for your organization.</p></div>
         </div>
         <div class="info-item">
           <div class="ico">✎</div>
-          <div><h5>Speaking / Panelist Inquiries</h5><p>GRC practitioners interested in leading a session are always welcome to reach out.</p></div>
+          <div><h3>Speaking / Panelist Inquiries</h3><p>GRC practitioners interested in leading a session are always welcome to reach out.</p></div>
         </div>
       </div>
 
@@ -105,16 +106,15 @@
         </div>
         <form id="contact-form" action="https://formspree.io/f/xeeynzzz" method="POST">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" name="first_name" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" name="last_name" required></div>
+            <div class="form-group"><label for="cf-first_name">First Name</label><input id="cf-first_name" type="text" name="first_name" required></div>
+            <div class="form-group"><label for="cf-last_name">Last Name</label><input id="cf-last_name" type="text" name="last_name" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>Work Email</label><input type="email" name="email" required></div>
-            <div class="form-group"><label>Company</label><input type="text" name="company"></div>
+            <div class="form-group"><label for="cf-email">Work Email</label><input id="cf-email" type="email" name="email" required></div>
+            <div class="form-group"><label for="cf-company">Company</label><input id="cf-company" type="text" name="company"></div>
           </div>
           <div class="form-group" style="margin-bottom:16px;">
-            <label>What are you reaching out about?</label>
-            <select name="inquiry_type">
+            <label for="cf-inquiry_type">What are you reaching out about?</label><select id="cf-inquiry_type" name="inquiry_type">
               <option>General Question</option>
               <option>Corporate / Onsite Training Proposal</option>
               <option>Panelist / Speaking Inquiry</option>
@@ -123,8 +123,7 @@
             </select>
           </div>
           <div class="form-group" style="margin-bottom:20px;">
-            <label>Message</label>
-            <textarea name="message" rows="5" required></textarea>
+            <label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Send Message</button>
         </form>
@@ -163,6 +162,7 @@
   </div>
 </section>
 
+</main>
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
@@ -181,7 +181,7 @@
         </div>
       </div>
       <div>
-        <h5>Training</h5>
+        <h2>Training</h2>
         <ul>
           <li><a href="webinars.html#live">Live Webinars</a></li>
           <li><a href="webinars.html#recorded">Recorded Webinars</a></li>
@@ -190,7 +190,7 @@
         </ul>
       </div>
       <div>
-        <h5>Resources</h5>
+        <h2>Resources</h2>
         <ul>
           <li><a href="digital-library.html">Digital Library</a></li>
           <li><a href="panelists.html">Our Panelists</a></li>
@@ -199,7 +199,7 @@
         </ul>
       </div>
       <div>
-        <h5>Company</h5>
+        <h2>Company</h2>
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
@@ -207,7 +207,7 @@
         </ul>
       </div>
       <div>
-        <h5>Policies</h5>
+        <h2>Policies</h2>
         <ul>
           <li><a href="refund-policy.html">Refund Policy</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
